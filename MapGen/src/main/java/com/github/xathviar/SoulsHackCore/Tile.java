@@ -5,7 +5,11 @@ import java.awt.*;
 
 public enum Tile {
     FLOOR('.', Color.CYAN),
-    DARKNESS('#', Color.WHITE);
+    CORRIDOR('.', Color.RED),
+    DOORVERTICAL('|', Color.GREEN),
+    DOORHORIZONTAL('-', Color.LIGHT_GRAY),
+    HIDDENDOOR('#', Color.GRAY),
+    WALL('#', Color.WHITE);
 
     private char character;
     private Color color;

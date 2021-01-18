@@ -22,13 +22,14 @@ public class WorldGenerator {
         this.height = height;
         image = new BufferedImage(width * 4, height * 4, BufferedImage.TYPE_INT_RGB);
         this.graphics2D = image.createGraphics();
-        graphics2D.setColor(Tile.DARKNESS.getColor());
+        graphics2D.setColor(Tile.WALL.getColor());
         graphics2D.fillRect(0, 0, width, height);
         kernel = PerlinScalar.permutation(8943575);
         createRooms();
         connectRooms();
-        addRoomsToTileArray();
         connectLinesToTileArray();
+        addRoomsToTileArray();
+        createDoors();
     }
 
 
@@ -70,12 +71,38 @@ public class WorldGenerator {
     }
 
     private void connectLinesToTileArray() {
-        graphics2D.setColor(Tile.FLOOR.getColor());
+        graphics2D.setColor(Tile.CORRIDOR.getColor());
         graphics2D.setStroke(new BasicStroke(1.5f));
         for (Edge edge : edges) {
             Point p1 = rooms[edge.getVertex1()].getCoordinates();
             Point p2 = rooms[edge.getVertex2()].getCoordinates();
             graphics2D.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        }
+    }
+
+    private void createDoors() {
+        for (int y = 0; y < image.getHeight(); y++) {
+            for (int x = 0; x < image.getWidth(); x++) {
+                int clr = image.getRGB(x, y);
+                if (clr == Tile.CORRIDOR.getColor().getRGB()) {
+                    if (image.getRGB(x + 1, y) == Tile.WALL.getColor().getRGB() && image.getRGB(x - 1, y) == Tile.WALL.getColor().getRGB()
+                            || image.getRGB(x, y + 1) == Tile.WALL.getColor().getRGB() && image.getRGB(x, y - 1) == Tile.WALL.getColor().getRGB()) {
+                        continue;
+                    }
+                    if (image.getRGB(x, y + 1) == Tile.FLOOR.getColor().getRGB()) {
+                        image.setRGB(x, y, Tile.DOORVERTICAL.getColor().getRGB());
+                    }
+                    if (image.getRGB(x, y - 1) == Tile.FLOOR.getColor().getRGB()) {
+                        image.setRGB(x, y, Tile.DOORVERTICAL.getColor().getRGB());
+                    }
+                    if (image.getRGB(x + 1, y) == Tile.FLOOR.getColor().getRGB()) {
+                        image.setRGB(x, y, Tile.DOORHORIZONTAL.getColor().getRGB());
+                    }
+                    if (image.getRGB(x - 1, y) == Tile.FLOOR.getColor().getRGB()) {
+                        image.setRGB(x, y, Tile.DOORHORIZONTAL.getColor().getRGB());
+                    }
+                }
+            }
         }
     }
 
@@ -92,6 +119,14 @@ public class WorldGenerator {
             e.printStackTrace();
         }
     }
+
+    private boolean doesNeighborContain(Tile tile, int x, int y) {
+        return image.getRGB(x, y + 1) == tile.getColor().getRGB() ||
+                image.getRGB(x, y - 1) == tile.getColor().getRGB() ||
+                image.getRGB(x + 1, y) == tile.getColor().getRGB() ||
+                image.getRGB(x - 1, y) == tile.getColor().getRGB();
+    }
+
 
     public static void main(String[] args) {
         WorldGenerator generator = new WorldGenerator(120, 80);

@@ -4,30 +4,6 @@ import java.util.*;
 import java.io.*;
 
 public class Kruskal {
-    public static void main(String[] args) {
-        ArrayList<Edge> graphEdges = new ArrayList<Edge>();        //edge list, not adjacency list
-        graphEdges.add(new Edge(3, 5, 2));
-        graphEdges.add(new Edge(6, 7, 5));
-        graphEdges.add(new Edge(3, 4, 6));
-        graphEdges.add(new Edge(4, 8, 7));
-        graphEdges.add(new Edge(1, 2, 9));
-        graphEdges.add(new Edge(4, 5, 11));
-        graphEdges.add(new Edge(1, 6, 14));
-        graphEdges.add(new Edge(1, 7, 15));
-        graphEdges.add(new Edge(5, 8, 16));
-        graphEdges.add(new Edge(3, 6, 18));
-        graphEdges.add(new Edge(3, 8, 19));
-        graphEdges.add(new Edge(7, 5, 20));
-        graphEdges.add(new Edge(2, 3, 24));
-        graphEdges.add(new Edge(7, 8, 44));        //Edges created in almost sorted order, only the last 2 are switched but this is unnecessary as edges are sorted in the algorithm
-        graphEdges.add(new Edge(6, 5, 30));
-
-        int nodeCount = 8;        //how many nodes. NODE COUNT MUST BE ENTERED MANUALLY. No error handling between nodeCount and graphEdges
-
-        Kruskal graph = new Kruskal();    //CAREFUL: nodeCount must be correct. No error checking between nodeCount & graphEdges to see how many nodes actually exist
-        graph.kruskalMST(graphEdges, nodeCount);
-    }
-
     public ArrayList<Edge> kruskalMST(ArrayList<Edge> graphEdges, int nodeCount) {
         String outputMessage = "";
 
