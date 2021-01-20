@@ -3,9 +3,6 @@ package com.github.xathviar.SoulsHackCore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * A Class which handles Rooms
@@ -128,7 +125,7 @@ public class Room {
 
     public static Room generateRandomRoundRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber, double scaleFactor) {
         Room room = new Room();
-        int radius = (int) (Math.abs(PerlinScalar.pickByte(kernel, (dx ^ dy) + 1 + roomNumber) / (256f * scaleFactor)) * ((Math.min(worldWidth, worldHeight) / 3))) + 4;
+        int radius = (int) (Math.abs(PerlinScalar.pickByte(kernel, (dx ^ dy) + 1 + roomNumber) / (1024f * scaleFactor)) * ((Math.min(worldWidth, worldHeight) / 3))) + 4;
         room.coordinates = new Point(dx, dy);
         room.radius = radius;
         return room;

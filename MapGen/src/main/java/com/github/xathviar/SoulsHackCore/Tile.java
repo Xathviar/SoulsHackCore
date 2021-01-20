@@ -6,10 +6,15 @@ import java.awt.*;
 public enum Tile {
     FLOOR('.', Color.CYAN),
     CORRIDOR('.', Color.RED),
-    DOORVERTICAL('|', Color.GREEN),
-    DOORHORIZONTAL('-', Color.LIGHT_GRAY),
+    WALL('#', Color.WHITE),
+    DOORCLOSED('▓', Color.GREEN),
+    DOOROPEN('░', Color.LIGHT_GRAY),
     HIDDENDOOR('#', Color.GRAY),
-    WALL('#', Color.WHITE);
+    CHEST('©', Color.MAGENTA),
+    TRAPFLOOR(':', Color.ORANGE),
+    STAIRSDOWN('<', new Color(254, 1, 1)),
+    STAIRSUP('>', new Color(2, 254, 2)),
+    BED('~', new Color(2,2,254));
 
     private char character;
     private Color color;
