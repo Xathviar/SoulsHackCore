@@ -104,36 +104,32 @@ public class Room {
         return room;
     }
 
-    public static Room generateRandomRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber) {
-        return Math.random() > 0.5 ? generateRandomRectangledRoom(worldWidth, worldHeight, dx, dy, kernel, roomNumber)
-                : generateRandomRoundRoom(worldWidth, worldHeight, dx, dy, kernel, roomNumber);
+    public static Room generateRandomRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber, double scaleFactor) {
+        return PerlinScalar.pickByte(kernel, roomNumber) > 128 ? generateRandomRectangledRoom(worldWidth, worldHeight, dx, dy, kernel, roomNumber, scaleFactor)
+                : generateRandomRoundRoom(worldWidth, worldHeight, dx, dy, kernel, roomNumber, scaleFactor);
     }
 
-    public static Room generateRandomRectangledRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber) {
+    public static Room generateRandomRectangledRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber, double scaleFactor) {
         Room room = new Room();
-        int width = (int) ((Math.abs(PerlinScalar.snoise(kernel, (dx ^ dy) + 1 + roomNumber)) * (worldWidth / 2))) + 5;
+        int width = (int) ((Math.abs(PerlinScalar.pickByte(kernel, (dx ^ dy) + 1 + roomNumber) / (256f * scaleFactor)) * (worldWidth / 2))) + 5;
         if (width % 2 == 0) {
             width--;
         }
 
-        int height = (int) ((Math.abs(PerlinScalar.snoise(kernel, (dx ^ dy) + 2 + roomNumber)) * (worldHeight / 2))) + 5;
+        int height = (int) ((Math.abs(PerlinScalar.pickByte(kernel, (dx ^ dy) + 2 + roomNumber) / (256f * scaleFactor)) * (worldHeight / 2))) + 5;
         if (height % 2 == 0) {
             height--;
         }
-        int x = (int) (Math.random() * (worldWidth - width) + (width / 2)) + dx;
-        int y = (int) (Math.random() * (worldHeight - height) + (height / 2)) + dy;
-        room.coordinates = new Point(x, y);
+        room.coordinates = new Point(dx, dy);
         room.width = width;
         room.height = height;
         return room;
     }
 
-    public static Room generateRandomRoundRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber) {
+    public static Room generateRandomRoundRoom(int worldWidth, int worldHeight, int dx, int dy, int[] kernel, int roomNumber, double scaleFactor) {
         Room room = new Room();
-        int radius = (int) (Math.abs(PerlinScalar.snoise(kernel, (dx ^ dy) + 1 + roomNumber)) * ((Math.min(worldWidth, worldHeight) / 3))) + 4;
-        int x = (int) (Math.random() * (worldWidth - radius * 2) + radius) + dx;
-        int y = (int) (Math.random() * (worldHeight - radius * 2) + radius) + dy;
-        room.coordinates = new Point(x, y);
+        int radius = (int) (Math.abs(PerlinScalar.pickByte(kernel, (dx ^ dy) + 1 + roomNumber) / (256f * scaleFactor)) * ((Math.min(worldWidth, worldHeight) / 3))) + 4;
+        room.coordinates = new Point(dx, dy);
         room.radius = radius;
         return room;
     }

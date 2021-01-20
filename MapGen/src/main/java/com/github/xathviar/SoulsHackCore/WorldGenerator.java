@@ -1,10 +1,14 @@
 package com.github.xathviar.SoulsHackCore;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.ArrayUtils;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class WorldGenerator {
@@ -14,18 +18,30 @@ public class WorldGenerator {
     private BufferedImage image;
     private Graphics2D graphics2D;
     private int[] kernel;
+    private int[] kernel2;
+    private int[] kernel3;
     private ArrayList<Edge> edges;
 
-    public WorldGenerator(int width, int height) {
-        rooms = new Room[width * height / 100];
+    public WorldGenerator(int width, int height, String seed) {
         this.width = width;
         this.height = height;
-        image = new BufferedImage(width * 4, height * 4, BufferedImage.TYPE_INT_RGB);
+        image = new BufferedImage(width * 2, height * 2, BufferedImage.TYPE_INT_RGB);
         this.graphics2D = image.createGraphics();
         graphics2D.setColor(Tile.WALL.getColor());
         graphics2D.fillRect(0, 0, width, height);
-        kernel = PerlinScalar.permutation(8943575);
-        createRooms();
+        long seedL = new BigInteger(DigestUtils.md5(seed)).longValue();
+        kernel = PerlinScalar.permutation((int) (seedL >>> 32));
+        kernel2 = PerlinScalar.permutation((int) seedL);
+        kernel3 = PerlinScalar.permutation(((int) seedL) ^ (int) (seedL >>> 32));
+        edges = new ArrayList<>();
+        if ((seedL & 1) == 1) {
+            rooms = new Room[width * height / 200];
+            createRooms();
+        } else {
+            rooms = new Room[width * height / 300];
+            createRooms2();
+        }
+        fixRooms();
         connectRooms();
         connectLinesToTileArray();
         addRoomsToTileArray();
@@ -33,13 +49,74 @@ public class WorldGenerator {
     }
 
 
-    private void createRooms() {
-        int hw = (int) Math.sqrt(rooms.length);
+    private void createRooms2() {
+        int halfWidth = width / 2;
+        int halfHeight = height / 2;
         for (int i = 0; i < rooms.length; i++) {
-            int j = i;
-            int dx = j / height;
-            int dy = j % width;
-            rooms[i] = Room.generateRandomRoom(width >> 1, height >> 1, dx, dy, kernel, i * 1000);
+            double j = Math.PI * 2 * ((double) i / (double) rooms.length);
+            rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight, halfWidth + (int) (halfWidth * Math.sin(j) * (PerlinScalar.pickByte(kernel2, i * 315) / 256f) * 0.9), halfHeight + (int) (halfHeight * Math.cos(j) * (PerlinScalar.pickByte(kernel2, (i + 1) * 315) / 256f) * 0.9), kernel, i * 1000, 4.0);
+//            if (j > 0.75) {
+//
+//            } else if (j > 0.5) {
+//                rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight, halfWidth, 0, kernel, i * 1000);
+//            } else if (j > 0.25) {
+//                rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight, 0, halfHeight, kernel, i * 1000);
+//            } else {
+//                rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight, 0, 0, kernel, i * 1000);
+//            }
+        }
+    }
+
+    private void createRooms() {
+        int[] rekursiv = new int[rooms.length];
+        for (int i = 0; i < rekursiv.length; i++) {
+            rekursiv[i] = i;
+        }
+        createRoom(5, rekursiv, width, height, 0, 0, 0);
+    }
+
+    private void createRoom(int abort, int[] rekursiv, int halfWidth, int halfHeight, int offsetWidth, int offsetHeight, int k) {
+        if (rekursiv.length == 1) {
+            int i = rekursiv[0];
+            double j = Math.PI * 2 * ((double) i / (double) rooms.length);
+            rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight,
+                    offsetWidth + (halfWidth / 2) + (int) ((halfWidth / 2) * Math.sin(j) * (PerlinScalar.pickByte(kernel2, i * 315) / 256f) * 0.9),
+                    offsetHeight + (halfHeight / 2) + (int) ((halfHeight / 2) * Math.cos(j) * (PerlinScalar.pickByte(kernel2, (i + 1) * 315) / 256f) * 0.9)
+                    , kernel, i * 1000, 1.0);
+            return;
+        }
+        if (rekursiv.length == 0) {
+            return;
+        }
+        if (abort < 1) {
+            for (int i : rekursiv) {
+                createRoom(0, new int[]{i}, halfWidth, halfHeight, offsetWidth, offsetHeight, k++);
+            }
+        } else {
+            int offset = rekursiv.length / 4;
+            if (offset == 0) {
+                offset++;
+            }
+            int[] split1 = ArrayUtils.subarray(rekursiv, 0, offset);
+            int[] split2 = ArrayUtils.subarray(rekursiv, offset, offset * 2);
+            int[] split3 = ArrayUtils.subarray(rekursiv, offset * 2, offset * 3);
+            int[] split4 = ArrayUtils.subarray(rekursiv, offset * 3, rekursiv.length);
+            abort--;
+            createRoom(abort - (PerlinScalar.pickByte(kernel3, k++) & 1), split1, halfWidth / 2, halfHeight / 2, offsetWidth, offsetHeight, k++);
+            createRoom(abort - (PerlinScalar.pickByte(kernel3, k++) & 1), split2, halfWidth / 2, halfHeight / 2, offsetWidth + (halfWidth / 2), offsetHeight, k++);
+            createRoom(abort - (PerlinScalar.pickByte(kernel3, k++) & 1), split3, halfWidth / 2, halfHeight / 2, offsetWidth, offsetHeight + (halfHeight / 2), k++);
+            createRoom(abort - (PerlinScalar.pickByte(kernel3, k++) & 1), split4, halfWidth / 2, halfHeight / 2, offsetWidth + (halfWidth / 2), offsetHeight + (halfHeight / 2), k++);
+        }
+    }
+
+    private void fixRooms() {
+        for (Room room : rooms) {
+            while (room.getCoordinates().getX() + room.getWidth() / 2 >= width) {
+                room.setWidth(room.getWidth() - 1);
+            }
+            while (room.getCoordinates().getY() + room.getHeight() / 2 >= height) {
+                room.setHeight(room.getHeight() - 1);
+            }
         }
     }
 
@@ -53,7 +130,11 @@ public class WorldGenerator {
                 }
             }
         }
-        edges = kruskal.kruskalMST(connections, rooms.length * 2);
+        edges.addAll(kruskal.kruskalMST(connections, rooms.length * 2));
+        connections.removeAll(edges);
+        ArrayList<Edge> blackList = kruskal.kruskalMST(connections, rooms.length * 2);
+        connections.removeAll(blackList);
+        edges.addAll(blackList);
     }
 
     private void addRoomsToTileArray() {
@@ -74,8 +155,8 @@ public class WorldGenerator {
         graphics2D.setColor(Tile.CORRIDOR.getColor());
         graphics2D.setStroke(new BasicStroke(1.5f));
         for (Edge edge : edges) {
-            Point p1 = rooms[edge.getVertex1()].getCoordinates();
-            Point p2 = rooms[edge.getVertex2()].getCoordinates();
+            Point p1 = rooms[edge.getVertex1() % rooms.length].getCoordinates();
+            Point p2 = rooms[edge.getVertex2() % rooms.length].getCoordinates();
             graphics2D.drawLine(p1.getX(), p1.getY(), p2.getX(), p2.getY());
         }
     }
@@ -89,16 +170,13 @@ public class WorldGenerator {
                             || image.getRGB(x, y + 1) == Tile.WALL.getColor().getRGB() && image.getRGB(x, y - 1) == Tile.WALL.getColor().getRGB()) {
                         continue;
                     }
-                    if (image.getRGB(x, y + 1) == Tile.FLOOR.getColor().getRGB()) {
+                    if (image.getRGB(x, y + 1) == Tile.FLOOR.getColor().getRGB() && image.getRGB(x, y - 1) == Tile.CORRIDOR.getColor().getRGB()) {
                         image.setRGB(x, y, Tile.DOORVERTICAL.getColor().getRGB());
-                    }
-                    if (image.getRGB(x, y - 1) == Tile.FLOOR.getColor().getRGB()) {
+                    } else if (image.getRGB(x, y - 1) == Tile.FLOOR.getColor().getRGB() && image.getRGB(x, y + 1) == Tile.CORRIDOR.getColor().getRGB()) {
                         image.setRGB(x, y, Tile.DOORVERTICAL.getColor().getRGB());
-                    }
-                    if (image.getRGB(x + 1, y) == Tile.FLOOR.getColor().getRGB()) {
+                    } else if (image.getRGB(x + 1, y) == Tile.FLOOR.getColor().getRGB() && image.getRGB(x - 1, y) == Tile.CORRIDOR.getColor().getRGB()) {
                         image.setRGB(x, y, Tile.DOORHORIZONTAL.getColor().getRGB());
-                    }
-                    if (image.getRGB(x - 1, y) == Tile.FLOOR.getColor().getRGB()) {
+                    } else if (image.getRGB(x - 1, y) == Tile.FLOOR.getColor().getRGB() && image.getRGB(x + 1, y) == Tile.CORRIDOR.getColor().getRGB()) {
                         image.setRGB(x, y, Tile.DOORHORIZONTAL.getColor().getRGB());
                     }
                 }
@@ -129,7 +207,8 @@ public class WorldGenerator {
 
 
     public static void main(String[] args) {
-        WorldGenerator generator = new WorldGenerator(120, 80);
+        String seed = "deadbeefcafeaffe";
+        WorldGenerator generator = new WorldGenerator(128, 128, seed);
         generator.soutTiles();
 
     }

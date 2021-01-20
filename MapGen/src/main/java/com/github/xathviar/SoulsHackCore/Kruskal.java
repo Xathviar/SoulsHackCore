@@ -6,7 +6,6 @@ import java.io.*;
 public class Kruskal {
     public ArrayList<Edge> kruskalMST(ArrayList<Edge> graphEdges, int nodeCount) {
         String outputMessage = "";
-
         Collections.sort(graphEdges);        //sort edges with smallest weight 1st
         ArrayList<Edge> mstEdges = new ArrayList<Edge>();    //list of edges included in the Minimum spanning tree (initially empty)
 

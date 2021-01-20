@@ -1,4 +1,5 @@
 package com.github.xathviar.SoulsHackCore;
+
 /**
  * Noise function from Ken Perlin. Additional routines are provided to emulate
  * standard Renderman calls. This code was adapted mainly from the mrclasses
@@ -7,26 +8,26 @@ package com.github.xathviar.SoulsHackCore;
  * @link http://mrl.nyu.edu/~perlin/noise/
  */
 public final class PerlinScalar {
-    private static final double[] G1 = { -1, 1 };
-    private static final double[][] G2 = { { 1, 0 }, { -1, 0 }, { 0, 1 },
-            { 0, -1 } };
-    private static final double[][] G3 = { { 1, 1, 0 }, { -1, 1, 0 },
-            { 1, -1, 0 }, { -1, -1, 0 }, { 1, 0, 1 }, { -1, 0, 1 },
-            { 1, 0, -1 }, { -1, 0, -1 }, { 0, 1, 1 }, { 0, -1, 1 },
-            { 0, 1, -1 }, { 0, -1, -1 }, { 1, 1, 0 }, { -1, 1, 0 },
-            { 0, -1, 1 }, { 0, -1, -1 } };
-    private static final double[][] G4 = { { -1, -1, -1, 0 }, { -1, -1, 1, 0 },
-            { -1, 1, -1, 0 }, { -1, 1, 1, 0 }, { 1, -1, -1, 0 },
-            { 1, -1, 1, 0 }, { 1, 1, -1, 0 }, { 1, 1, 1, 0 },
-            { -1, -1, 0, -1 }, { -1, 1, 0, -1 }, { 1, -1, 0, -1 },
-            { 1, 1, 0, -1 }, { -1, -1, 0, 1 }, { -1, 1, 0, 1 },
-            { 1, -1, 0, 1 }, { 1, 1, 0, 1 }, { -1, 0, -1, -1 },
-            { 1, 0, -1, -1 }, { -1, 0, -1, 1 }, { 1, 0, -1, 1 },
-            { -1, 0, 1, -1 }, { 1, 0, 1, -1 }, { -1, 0, 1, 1 }, { 1, 0, 1, 1 },
-            { 0, -1, -1, -1 }, { 0, -1, -1, 1 }, { 0, -1, 1, -1 },
-            { 0, -1, 1, 1 }, { 0, 1, -1, -1 }, { 0, 1, -1, 1 },
-            { 0, 1, 1, -1 }, { 0, 1, 1, 1 } };
-    private static final int[] PERLIN = { 151, 160, 137, 91, 90, 15, 131, 13, 201,
+    private static final double[] G1 = {-1, 1};
+    private static final double[][] G2 = {{1, 0}, {-1, 0}, {0, 1},
+            {0, -1}};
+    private static final double[][] G3 = {{1, 1, 0}, {-1, 1, 0},
+            {1, -1, 0}, {-1, -1, 0}, {1, 0, 1}, {-1, 0, 1},
+            {1, 0, -1}, {-1, 0, -1}, {0, 1, 1}, {0, -1, 1},
+            {0, 1, -1}, {0, -1, -1}, {1, 1, 0}, {-1, 1, 0},
+            {0, -1, 1}, {0, -1, -1}};
+    private static final double[][] G4 = {{-1, -1, -1, 0}, {-1, -1, 1, 0},
+            {-1, 1, -1, 0}, {-1, 1, 1, 0}, {1, -1, -1, 0},
+            {1, -1, 1, 0}, {1, 1, -1, 0}, {1, 1, 1, 0},
+            {-1, -1, 0, -1}, {-1, 1, 0, -1}, {1, -1, 0, -1},
+            {1, 1, 0, -1}, {-1, -1, 0, 1}, {-1, 1, 0, 1},
+            {1, -1, 0, 1}, {1, 1, 0, 1}, {-1, 0, -1, -1},
+            {1, 0, -1, -1}, {-1, 0, -1, 1}, {1, 0, -1, 1},
+            {-1, 0, 1, -1}, {1, 0, 1, -1}, {-1, 0, 1, 1}, {1, 0, 1, 1},
+            {0, -1, -1, -1}, {0, -1, -1, 1}, {0, -1, 1, -1},
+            {0, -1, 1, 1}, {0, 1, -1, -1}, {0, 1, -1, 1},
+            {0, 1, 1, -1}, {0, 1, 1, 1}};
+    private static final int[] PERLIN = {151, 160, 137, 91, 90, 15, 131, 13, 201,
             95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37,
             240, 21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62,
             94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 149, 56,
@@ -61,10 +62,10 @@ public final class PerlinScalar {
             191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192,
             214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45,
             127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243,
-            141, 128, 195, 78, 66, 215, 61, 156, 180 };
+            141, 128, 195, 78, 66, 215, 61, 156, 180};
 
     public static final double snoise(int[] perlin, double x) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         int xf = (int) Math.floor(x);
         int X = xf & 255;
         x -= xf;
@@ -74,7 +75,7 @@ public final class PerlinScalar {
     }
 
     public static final double snoise(int[] perlin, double x, double y) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         int xf = (int) Math.floor(x);
         int yf = (int) Math.floor(y);
         int X = xf & 255;
@@ -88,7 +89,7 @@ public final class PerlinScalar {
     }
 
     public static final double snoise(int[] perlin, double x, double y, double z) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         int xf = (int) Math.floor(x);
         int yf = (int) Math.floor(y);
         int zf = (int) Math.floor(z);
@@ -105,8 +106,16 @@ public final class PerlinScalar {
         return lerp(w, lerp(v, lerp(u, grad(perlin[AA], x, y, z), grad(perlin[BA], x - 1, y, z)), lerp(u, grad(perlin[AB], x, y - 1, z), grad(perlin[BB], x - 1, y - 1, z))), lerp(v, lerp(u, grad(perlin[AA + 1], x, y, z - 1), grad(perlin[BA + 1], x - 1, y, z - 1)), lerp(u, grad(perlin[AB + 1], x, y - 1, z - 1), grad(perlin[BB + 1], x - 1, y - 1, z - 1))));
     }
 
+    public static final int pickByte(int[] perlin, int i) {
+        return perlin[i % perlin.length];
+    }
+
+    public static final int pickInteger(int[] perlin, int i) {
+        return (pickByte(perlin, i) << 24) | (pickByte(perlin, i + 1) << 16) | (pickByte(perlin, i + 2) << 8) | pickByte(perlin, i + 3);
+    }
+
     public static final double snoise(int[] perlin, double x, double y, double z, double w) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         int xf = (int) Math.floor(x);
         int yf = (int) Math.floor(y);
         int zf = (int) Math.floor(z);
@@ -128,33 +137,33 @@ public final class PerlinScalar {
     }
 
     public static final double noise(int[] perlin, double x) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         return 0.5f + 0.5f * snoise(perlin, x);
     }
 
     public static final double noise(int[] perlin, double x, double y) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         return 0.5f + 0.5f * snoise(perlin, x, y);
     }
 
     public static final double noise(int[] perlin, double x, double y, double z) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         return 0.5f + 0.5f * snoise(perlin, x, y, z);
     }
 
     public static final double noise(int[] perlin, double x, double y, double z, double t) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         return 0.5f + 0.5f * snoise(perlin, x, y, z, t);
     }
 
     public static final double pnoise(int[] perlin, double xi, double period) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % period) + ((xi < 0) ? period : 0);
         return ((period - x) * noise(perlin, x) + x * noise(perlin, x - period)) / period;
     }
 
     public static final double pnoise(int[] perlin, double xi, double yi, double w, double h) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double w_x = w - x;
@@ -165,7 +174,7 @@ public final class PerlinScalar {
     }
 
     public static final double pnoise(int[] perlin, double xi, double yi, double zi, double w, double h, double d) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double z = (zi % d) + ((zi < 0) ? d : 0);
@@ -183,7 +192,7 @@ public final class PerlinScalar {
     }
 
     public static final double pnoise(int[] perlin, double xi, double yi, double zi, double ti, double w, double h, double d, double p) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double z = (zi % d) + ((zi < 0) ? d : 0);
@@ -208,13 +217,13 @@ public final class PerlinScalar {
     }
 
     public static final double spnoise(int[] perlin, double xi, double period) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % period) + ((xi < 0) ? period : 0);
         return (((period - x) * snoise(perlin, x) + x * snoise(perlin, x - period)) / period);
     }
 
     public static final double spnoise(int[] perlin, double xi, double yi, double w, double h) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double w_x = w - x;
@@ -225,7 +234,7 @@ public final class PerlinScalar {
     }
 
     public static final double spnoise(int[] perlin, double xi, double yi, double zi, double w, double h, double d) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double z = (zi % d) + ((zi < 0) ? d : 0);
@@ -243,7 +252,7 @@ public final class PerlinScalar {
     }
 
     public static final double spnoise(int[] perlin, double xi, double yi, double zi, double ti, double w, double h, double d, double p) {
-        if(perlin == null) perlin = PERLIN;
+        if (perlin == null) perlin = PERLIN;
         double x = (xi % w) + ((xi < 0) ? w : 0);
         double y = (yi % h) + ((yi < 0) ? h : 0);
         double z = (zi % d) + ((zi < 0) ? d : 0);
@@ -295,12 +304,10 @@ public final class PerlinScalar {
         return x * G4[h][0] + y * G4[h][1] + z * G4[h][2] + w * G4[h][3];
     }
 
-    static public int[] permutation(int s)
-    {
+    static public int[] permutation(int s) {
         int[] p = new int[512];
-        for (int i=0; i < 256 ; i++)
-        {
-            p[256+i] = p[i] = ((PERLIN[i] ^ s) & 0xff);
+        for (int i = 0; i < 256; i++) {
+            p[256 + i] = p[i] = ((PERLIN[i] ^ s) & 0xff);
         }
         return p;
     }
