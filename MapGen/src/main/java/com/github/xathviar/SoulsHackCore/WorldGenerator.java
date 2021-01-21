@@ -56,7 +56,10 @@ public class WorldGenerator {
         int halfHeight = height / 2;
         for (int i = 0; i < rooms.length; i++) {
             double j = Math.PI * 2 * ((double) i / (double) rooms.length);
-            rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight, halfWidth + (int) (halfWidth * Math.sin(j) * (PerlinScalar.pickByte(kernel2, i * 315) / 256f) * 0.9), halfHeight + (int) (halfHeight * Math.cos(j) * (PerlinScalar.pickByte(kernel2, (i + 1) * 315) / 256f) * 0.9), kernel, i * 1000, 4.0);
+            rooms[i] = Room.generateRandomRoom(halfWidth, halfHeight,
+                    halfWidth + (int) (halfWidth * Math.sin(j) * (0.1 + ((PerlinScalar.pickByte(kernel2, i * 315) / 256f) * 0.9))),
+                    halfHeight + (int) (halfHeight * Math.cos(j) * (0.1 + ((PerlinScalar.pickByte(kernel2, (i + 1) * 315) / 256f) * 0.9))),
+                    kernel, i * 1000, 6.0);
         }
     }
 
@@ -137,8 +140,8 @@ public class WorldGenerator {
                 graphics2D.fillRect(room.getCoordinates().getX() - (room.getWidth() / 2)
                         , room.getCoordinates().getY() - (room.getHeight() / 2), room.getWidth(), room.getHeight());
             } else {
-                graphics2D.fillRoundRect(room.getCoordinates().getX() - (room.getRadius() )
-                        , room.getCoordinates().getY() - (room.getRadius() )
+                graphics2D.fillRoundRect(room.getCoordinates().getX() - (room.getRadius())
+                        , room.getCoordinates().getY() - (room.getRadius())
                         , room.getRadius() * 2, room.getRadius() * 2, room.getRadius() * 2, room.getRadius() * 2);
             }
         }
@@ -201,10 +204,12 @@ public class WorldGenerator {
     private void populateRoom() {
         for (int i = 0, j = 0; i < rooms.length; i++, j++) {
             int flag = PerlinScalar.pickByte(kernel4, i * 315);
-            for (Tile t : new Tile[]{Tile.CHEST, Tile.TRAPFLOOR, Tile.BED}) {
-                if ((flag & t.ordinal()) > 0) {
-                    Point point = getRandomCoordinateFromRoom(rooms[i], j++);
-                    image.setRGB(point.getX(), point.getY(), t.getColor().getRGB());
+            if (flag % 3 == 0) {
+                for (Tile t : new Tile[]{Tile.CHEST, Tile.TRAPFLOOR, Tile.BED}) {
+                    if ((flag & t.ordinal()) > 0) {
+                        Point point = getRandomCoordinateFromRoom(rooms[i], j++);
+                        image.setRGB(point.getX(), point.getY(), t.getColor().getRGB());
+                    }
                 }
             }
         }
@@ -223,10 +228,18 @@ public class WorldGenerator {
         return new Point(x, y);
     }
 
+    public void exportImage(String path) {
+        try {
+            ImageIO.write(image, "png", new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        String seed = "deadbeefcafeaffe";
+        String seed = "Terefang";
         WorldGenerator generator = new WorldGenerator(128, 128, seed);
         generator.soutTiles();
-
+//        generator.exportImage("image.png");
     }
 }
