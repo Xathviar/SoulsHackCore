@@ -6,9 +6,9 @@ import org.apache.commons.lang3.ArrayUtils;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigInteger;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class WorldGenerator {
@@ -29,7 +29,7 @@ public class WorldGenerator {
         image = new BufferedImage(width * 2, height * 2, BufferedImage.TYPE_INT_RGB);
         this.graphics2D = image.createGraphics();
         graphics2D.setColor(Tile.WALL.getColor());
-        graphics2D.fillRect(0, 0, width, height);
+        graphics2D.fillRect(0, 0, width + 2, height + 2);
         BigInteger bigI = new BigInteger(DigestUtils.sha512(seed));
         kernel = PerlinScalar.permutation(bigI.intValue());
         kernel2 = PerlinScalar.permutation(bigI.shiftRight(32).intValue());
@@ -49,6 +49,7 @@ public class WorldGenerator {
         addRoomsToTileArray();
         createDoors();
         populateRoom();
+        drawWalls();
     }
 
     private void createRooms2() {
@@ -228,18 +229,138 @@ public class WorldGenerator {
         return new Point(x, y);
     }
 
-    public void exportImage(String path) {
-        try {
-            ImageIO.write(image, "png", new File(path));
+    private void drawWalls() {
+        BufferedImage copy = copyImage(image);
+        for (int x = 0; x < width + 2; x++) {
+            for (int y = 0; y < height + 1; y++) {
+                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
+                try {
+                    if (tile != Tile.WALL) {
+                        continue;
+                    }
+                    Tile belowNeighbor = Tile.convertColorToTile(copy.getRGB(x, y + 1));
+                    if (belowNeighbor != Tile.WALL) {
+                        image.setRGB(x, y, Tile.WALLVERTICAL.getColor().getRGB());
+                    }
+                    Tile aboveNeighbor = Tile.convertColorToTile(copy.getRGB(x, y - 1));
+                    if (aboveNeighbor != Tile.WALL) {
+                        image.setRGB(x, y, Tile.WALLVERTICAL.getColor().getRGB());
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        for (int y = 0; y < height + 2; y++) {
+            for (int x = 0; x < width + 1; x++) {
+                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
+                try {
+                    if (tile != Tile.WALL) {
+                        continue;
+                    }
+                    Tile belowNeighbor = Tile.convertColorToTile(copy.getRGB(x + 1, y));
+                    if (belowNeighbor != Tile.WALL) {
+                        image.setRGB(x, y, Tile.WALLHORIZONTAL.getColor().getRGB());
+                    }
+                    Tile aboveNeighbor = Tile.convertColorToTile(copy.getRGB(x - 1, y));
+                    if (aboveNeighbor != Tile.WALL) {
+                        image.setRGB(x, y, Tile.WALLHORIZONTAL.getColor().getRGB());
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        for (int x = 0; x < width + 1; x++) {
+            for (int y = 0; y < height + 1; y++) {
+                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
+                try {
+                    if (tile != Tile.WALL) {
+                        continue;
+                    }
+                    int count = countNeighboursContainingTile(x, y, Tile.WALL, copy);
+                    if (count == 1 || count == 5) {
+                        image.setRGB(x, y, Tile.WALLEDGENORMAL.getColor().getRGB());
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        }
+    }
+
+    public int countNeighboursContainingTile(int x, int y, Tile tile, BufferedImage clonedImage) {
+        int c = 0;
+        for (int ix = x - 1; ix <= x + 1; ix++) {
+            for (int iy = y - 1; iy <= y + 1; iy++) {
+                try {
+                    if (ix == x && iy == y) {
+                        continue;
+                    }
+                    if (Tile.convertColorToTile(clonedImage.getRGB(ix, iy)) != tile) {
+                        c++;
+                    }
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        return c;
+    }
+
+
+    public static BufferedImage copyImage(BufferedImage source) {
+        BufferedImage b = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        Graphics g = b.getGraphics();
+        g.drawImage(source, 0, 0, null);
+        g.dispose();
+        return b;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void createTiledMap(File outFile) {
+        StringBuilder data = new StringBuilder();
+        data.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        data.append("<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\" tilewidth=\"8\" tileheight=\"8\" infinite=\"0\" nextlayerid=\"2\" nextobjectid=\"1\">\n");
+        data.append(" <tileset firstgid=\"1\" source=\"ami8.tsx\"/>\n");
+        data.append(" <layer id=\"1\" name=\"Tile Layer 1\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
+        data.append("  <data encoding=\"csv\">\n");
+        for (int x = 0; x < width + 2; x++) {
+            for (int y = 0; y < height + 2; y++) {
+                if (!(x == y && x == 0)) {
+                    data.append(",");
+                }
+                try {
+                    data.append((int) Tile.convertColorToTile(image.getRGB(x, y)).getCharacter());
+                } catch (NullPointerException e) {
+                    data.append(0);
+                }
+            }
+            data.append("\n");
+        }
+        data.append("</data>\n");
+        data.append("</layer>\n");
+        data.append("</map>");
+        String dataS = data.toString();
+        try (FileOutputStream fos = new FileOutputStream(outFile);
+             BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+            byte[] bytes = dataS.getBytes();
+            bos.write(bytes);
+            bos.close();
+            fos.close();
+            System.out.print("Data written to file successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        String seed = "Terefang";
+        String seed = "WirdDiyarDia? Natürlich!!!";
         WorldGenerator generator = new WorldGenerator(128, 128, seed);
         generator.soutTiles();
-//        generator.exportImage("image.png");
+        TileFontGenerator.exportImage(new File("image.png"), generator.getImage());
+        generator.createTiledMap(new File("MapGen/src/main/resources/test2.tmx"));
     }
 }
