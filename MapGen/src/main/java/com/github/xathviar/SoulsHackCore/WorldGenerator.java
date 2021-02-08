@@ -637,6 +637,20 @@ public class WorldGenerator {
     }
 
     public void createTiledMap(File outFile) {
+        String dataS = generateTiledMap().toString();
+        try (FileOutputStream fos = new FileOutputStream(outFile);
+             BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+            byte[] bytes = dataS.getBytes();
+            bos.write(bytes);
+            bos.close();
+            fos.close();
+            System.out.print("Data written to file successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public StringBuilder generateTiledMap() {
         StringBuilder data = new StringBuilder();
         data.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         data.append("<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\" tilewidth=\"8\" tileheight=\"8\" infinite=\"0\" nextlayerid=\"2\" nextobjectid=\"1\">\n");
@@ -659,17 +673,7 @@ public class WorldGenerator {
         data.append("</data>\n");
         data.append("</layer>\n");
         data.append("</map>");
-        String dataS = data.toString();
-        try (FileOutputStream fos = new FileOutputStream(outFile);
-             BufferedOutputStream bos = new BufferedOutputStream(fos)) {
-            byte[] bytes = dataS.getBytes();
-            bos.write(bytes);
-            bos.close();
-            fos.close();
-            System.out.print("Data written to file successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return data;
     }
 
     public static void main(String[] args) {
