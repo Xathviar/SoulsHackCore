@@ -9,11 +9,26 @@ public enum Tile {
     WALL((char) 0, Color.WHITE),
     WALLHORIZONTAL((char) 197, new Color(255, 197, 0)),
     WALLVERTICAL((char) 180, new Color(255, 180, 0)),
+
     WALLEDGELEFTOP((char) 219, new Color(255, 219, 0)),
-    WALLEDGELEFBOTTOM((char) 193, new Color(255, 193, 0)),
+    WALLEDGELEFTBOTTOM((char) 193, new Color(255, 193, 0)),
     WALLEDGERIGHTTOP((char) 192, new Color(255, 192, 0)),
     WALLEDGERIGHTBOTTOM((char) 218, new Color(255, 218, 0)),
     WALLEDGENORMAL((char) 10, new Color(255, 10, 0)),
+
+    WALLTTOP((char) 194, new Color(255, 194, 0)),
+    WALLTLEFT((char) 181, new Color(255, 181, 0)),
+    WALLTRIGHT((char) 196, new Color(255, 196, 0)),
+    WALLTBOTTOM((char) 195, new Color(255, 195, 0)),
+
+    WALLCROSS((char) 198, new Color(255, 198, 0)),
+
+
+    WALLDIAGONALDOWNUP((char) 48, new Color(255, 48, 0)),
+    WALLDIAGONALLUPDOWN((char) 93, new Color(255, 93, 0)),
+
+    PILLAR((char) 43, new Color(255, 43, 0)),
+
     DOORCLOSED((char) 198, Color.GREEN),
     DOOROPENVERTICAL((char) 197, Color.LIGHT_GRAY),
     DOOROPENHORIZONTAL((char) 180, Color.LIGHT_GRAY),
