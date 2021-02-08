@@ -234,67 +234,6 @@ public class WorldGenerator {
     }
 
     private void drawWalls() {
-//        BufferedImage copy = copyImage(image);
-//        /*
-//         * Creates Horizontal Walls
-//         */
-//        for (int x = 0; x < width + 2; x++) {
-//            for (int y = 0; y < height + 1; y++) {
-//                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
-//                try {
-//                    if (tile != Tile.WALL) {
-//                        continue;
-//                    }
-//                    Tile belowNeighbor = Tile.convertColorToTile(copy.getRGB(x, y + 1));
-//                    if (belowNeighbor != Tile.WALL) {
-//                        image.setRGB(x, y, Tile.WALLVERTICAL.getColor().getRGB());
-//                    }
-//                    Tile aboveNeighbor = Tile.convertColorToTile(copy.getRGB(x, y - 1));
-//                    if (aboveNeighbor != Tile.WALL) {
-//                        image.setRGB(x, y, Tile.WALLVERTICAL.getColor().getRGB());
-//                    }
-//                } catch (Exception ignored) {}
-//            }
-//        }
-//        /*
-//         * Creates Vertical Walls
-//         */
-//        for (int y = 0; y < height + 2; y++) {
-//            for (int x = 0; x < width + 1; x++) {
-//                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
-//                try {
-//                    if (tile != Tile.WALL) {
-//                        continue;
-//                    }
-//                    Tile belowNeighbor = Tile.convertColorToTile(copy.getRGB(x + 1, y));
-//                    if (belowNeighbor != Tile.WALL) {
-//                        image.setRGB(x, y, Tile.WALLHORIZONTAL.getColor().getRGB());
-//                    }
-//                    Tile aboveNeighbor = Tile.convertColorToTile(copy.getRGB(x - 1, y));
-//                    if (aboveNeighbor != Tile.WALL) {
-//                        image.setRGB(x, y, Tile.WALLHORIZONTAL.getColor().getRGB());
-//                    }
-//                } catch (Exception ignored) {}
-//            }
-//        }
-//        /*
-//         * Creates The Edges of Walls
-//         */
-//        for (int x = 0; x < width + 1; x++) {
-//            for (int y = 0; y < height + 1; y++) {
-//                Tile tile = Tile.convertColorToTile(copy.getRGB(x, y));
-//                try {
-//                    if (tile != Tile.WALL) {
-//                        continue;
-//                    }
-//                    int count = countNeighboursContainingTile(x, y, Tile.WALL, copy);
-//                    if (count == 1 || count == 5) {
-//                        image.setRGB(x, y, Tile.WALLEDGENORMAL.getColor().getRGB());
-//                    }
-//
-//                } catch (Exception ignored) {}
-//            }
-//        }
         BufferedImage copy = copyImage(image);
         for (int y = 0; y < height + 2; y++) {
             for (int x = 0; x < width + 2; x++) {
