@@ -594,7 +594,7 @@ public class WorldGenerator {
         data.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         data.append("<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\" tilewidth=\"8\" tileheight=\"8\" infinite=\"0\" nextlayerid=\"2\" nextobjectid=\"1\">\n");
         data.append(" <tileset firstgid=\"1\" source=\"ami8.tsx\"/>\n");
-        data.append(" <layer id=\"1\" name=\"Tile Layer 1\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
+        data.append(" <layer id=\"1\" name=\"Floor\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
         data.append("  <data encoding=\"csv\">\n");
         for (int x = 0; x < width + 2; x++) {
             for (int y = 0; y < height + 2; y++) {
@@ -602,7 +602,30 @@ public class WorldGenerator {
                     data.append(",");
                 }
                 try {
-                    data.append((int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter());
+                    int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
+                    if (i == 250 || i == 156 || i == 211) {
+                        data.append(i);
+                    }
+                } catch (NullPointerException e) {
+                    data.append(0);
+                }
+            }
+            data.append("\n");
+        }
+        data.append("</data>\n");
+        data.append("</layer>\n");
+        data.append(" <layer id=\"2\" name=\"Walls\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
+        data.append("  <data encoding=\"csv\">\n");
+        for (int x = 0; x < width + 2; x++) {
+            for (int y = 0; y < height + 2; y++) {
+                if (!(x == y && x == 0)) {
+                    data.append(",");
+                }
+                try {
+                    int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
+                    if (i != 250 && i != 156 && i != 211) {
+                        data.append(i);
+                    }
                 } catch (NullPointerException e) {
                     data.append(0);
                 }
