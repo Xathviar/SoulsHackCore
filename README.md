@@ -30,7 +30,7 @@ StringBuilder s = gen.generateTiledMap();
   		<dependency>
 			<groupId>com.github.Xathviar.SoulsHackCore</groupId>
 			<artifactId>MapGen</artifactId>
-			<version>v1.4</version>
+			<version>v1.5</version>
 		</dependency>
   </dependencies>
 ```
