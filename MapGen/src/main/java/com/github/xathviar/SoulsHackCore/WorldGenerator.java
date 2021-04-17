@@ -592,7 +592,7 @@ public class WorldGenerator {
     public StringBuilder generateTiledMap() {
         StringBuilder data = new StringBuilder();
         data.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        data.append("<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\" tilewidth=\"8\" tileheight=\"8\" infinite=\"0\" nextlayerid=\"2\" nextobjectid=\"1\">\n");
+        data.append("<map version=\"1.4\" tiledversion=\"1.4.3\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\" tilewidth=\"32\" tileheight=\"32\" infinite=\"0\" nextlayerid=\"2\" nextobjectid=\"1\">\n");
         data.append(" <tileset firstgid=\"1\" source=\"ami8.tsx\"/>\n");
         data.append(" <layer id=\"1\" name=\"Floor\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
         data.append("  <data encoding=\"csv\">\n");
