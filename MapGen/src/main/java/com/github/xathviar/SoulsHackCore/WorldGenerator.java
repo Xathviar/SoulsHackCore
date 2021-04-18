@@ -627,6 +627,8 @@ public class WorldGenerator {
                     int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
                     if (i != 250 && i != 156 && i != 211) {
                         data.append(i);
+                    } else {
+                        data.append(0);
                     }
                 } catch (NullPointerException e) {
                     data.append(0);
