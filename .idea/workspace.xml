@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Changed one small Thing :D" />
+=======
+    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Release Candidate Nr. 1" />
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +24,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <option name="RESET_MODE" value="HARD" />
+=======
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -30,6 +37,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\afris\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7319.50\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
   <component name="ProjectId" id="1n6CAyBHxeNGXmjWhHd0QfQNWVb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -43,7 +60,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/MapGen/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+=======
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -127,8 +148,11 @@
       <workItem from="1613333555183" duration="628000" />
       <workItem from="1618619695188" duration="494000" />
       <workItem from="1618704418646" duration="1143000" />
+<<<<<<< HEAD
       <workItem from="1619825245445" duration="221000" />
       <workItem from="1619825584617" duration="458000" />
+=======
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
     </task>
     <task id="LOCAL-00001" summary="Türen Algorithmus eingeführt... Stable Release?">
       <created>1611008812755</created>
@@ -242,6 +266,7 @@
       <option name="project" value="LOCAL" />
       <updated>1618704959161</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00017" summary="Changed one small Thing :D">
       <created>1619825287102</created>
       <option name="number" value="00017" />
@@ -257,6 +282,9 @@
       <updated>1619825355330</updated>
     </task>
     <option name="localTasksCounter" value="19" />
+=======
+    <option name="localTasksCounter" value="17" />
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,8 +319,12 @@
     <MESSAGE value="Small Fixes including changing sizes" />
     <MESSAGE value="Finished?!" />
     <MESSAGE value="Release Candidate Nr. 1" />
+<<<<<<< HEAD
     <MESSAGE value="Changed one small Thing :D" />
     <option name="LAST_COMMIT_MESSAGE" value="Changed one small Thing :D" />
+=======
+    <option name="LAST_COMMIT_MESSAGE" value="Release Candidate Nr. 1" />
+>>>>>>> 8bd01edeed12252b496d191c276cdcc998e7ea2c
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
