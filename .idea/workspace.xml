@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Release Candidate Nr. 1" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\afris\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7319.50\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1n6CAyBHxeNGXmjWhHd0QfQNWVb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MapGen/src/main/resources" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.github.xathviar.SoulsHackCore" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\afris\OneDrive - HTL Wien 3 Rennweg\Desktop\SoulsHackCore\MapGen\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\afris\OneDrive - HTL Wien 3 Rennweg\Desktop\SoulsHackCore\MapGen\src\main\resources" />
+      <recent name="C:\Users\afris\OneDrive - HTL Wien 3 Rennweg\Desktop\SoulsHackCore\MapGen\src\main" />
+      <recent name="C:\Users\afris\OneDrive - HTL Wien 3 Rennweg\Desktop\SoulsHackCore\MapGen\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.WorldGenerator">
+    <configuration name="TileFontGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.xathviar.SoulsHackCore.TileFontGenerator" />
+      <module name="MapGen" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.xathviar.SoulsHackCore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WorldGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.github.xathviar.SoulsHackCore.WorldGenerator" />
+      <module name="MapGen" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.xathviar.SoulsHackCore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.WorldGenerator" />
+        <item itemvalue="Application.TileFontGenerator" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="" />
+      <created>1610701015325</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610701015325</updated>
+      <workItem from="1610701016424" duration="984000" />
+      <workItem from="1610763291353" duration="1496000" />
+      <workItem from="1610801665069" duration="12174000" />
+      <workItem from="1610827373422" duration="13737000" />
+      <workItem from="1610882568625" duration="2341000" />
+      <workItem from="1610892599799" duration="3270000" />
+      <workItem from="1610960943707" duration="79000" />
+      <workItem from="1611007926660" duration="918000" />
+      <workItem from="1611079675960" duration="169000" />
+      <workItem from="1611086894999" duration="233000" />
+      <workItem from="1611146419587" duration="9000" />
+      <workItem from="1611170011510" duration="17278000" />
+      <workItem from="1611187324853" duration="691000" />
+      <workItem from="1611241522743" duration="139000" />
+      <workItem from="1611271073296" duration="60000" />
+      <workItem from="1611275494952" duration="150000" />
+      <workItem from="1611313817102" duration="20000" />
+      <workItem from="1612652998334" duration="11330000" />
+      <workItem from="1612734200779" duration="255000" />
+      <workItem from="1612734618687" duration="11816000" />
+      <workItem from="1612813765028" duration="392000" />
+      <workItem from="1612893440385" duration="7000" />
+      <workItem from="1613081275143" duration="489000" />
+      <workItem from="1613081860630" duration="574000" />
+      <workItem from="1613333555183" duration="628000" />
+      <workItem from="1618619695188" duration="494000" />
+      <workItem from="1618704418646" duration="1143000" />
+    </task>
+    <task id="LOCAL-00001" summary="Türen Algorithmus eingeführt... Stable Release?">
+      <created>1611008812755</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611008812755</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Algorithm works with Seeds!">
+      <created>1611180382362</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611180382362</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Algorithmus geht!">
+      <created>1611185738476</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611185738476</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Algorithmus geht und bisschen cleanup">
+      <created>1611185849237</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611185849237</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Maven und Windows verträgt sich nicht-.-">
+      <created>1611187979614</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611187979614</updated>
+    </task>
+    <task id="LOCAL-00006" summary="WorldGenerator with Tiled Implementation started">
+      <created>1612664282408</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612664282408</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Oha WorldGenerator Ur gut^^">
+      <created>1612743944501</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1612743944501</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed pom">
+      <created>1612744459099</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612744459099</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed .gitignore maybe">
+      <created>1612744884400</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612744884400</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Perfect WorldGenerator">
+      <created>1612746141502</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1612746141502</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Done">
+      <created>1612746437670</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1612746437670</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added walls to seperate Layer so it works better with box2d">
+      <created>1613081597957</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1613081597957</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated README.md">
+      <created>1613081885793</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1613081885793</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Small Fixes including changing sizes">
+      <created>1618620083489</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1618620083489</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Finished?!">
+      <created>1618704520636</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1618704520636</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Release Candidate Nr. 1">
+      <created>1618704959161</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1618704959161</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Türen Algorithmus eingeführt... Stable Release?" />
+    <MESSAGE value="Algorithm works with Seeds!" />
+    <MESSAGE value="Algorithmus geht!" />
+    <MESSAGE value="Algorithmus geht und bisschen cleanup" />
+    <MESSAGE value="Maven und Windows verträgt sich nicht-.-" />
+    <MESSAGE value="WorldGenerator with Tiled Implementation started" />
+    <MESSAGE value="Oha WorldGenerator Ur gut^^" />
+    <MESSAGE value="Fixed pom" />
+    <MESSAGE value="Fixed .gitignore maybe" />
+    <MESSAGE value="Perfect WorldGenerator" />
+    <MESSAGE value="Done" />
+    <MESSAGE value="Added walls to seperate Layer so it works better with box2d" />
+    <MESSAGE value="Updated README.md" />
+    <MESSAGE value="Small Fixes including changing sizes" />
+    <MESSAGE value="Finished?!" />
+    <MESSAGE value="Release Candidate Nr. 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release Candidate Nr. 1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="wall.x" />
+        <watch expression="x" />
+        <watch expression="x" language="JAVA" />
+        <watch expression="x" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
