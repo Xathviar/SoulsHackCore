@@ -596,6 +596,28 @@ public class WorldGenerator {
         data.append(" <tileset firstgid=\"1\" source=\"ami8.tsx\"/>\n");
         data.append(" <layer id=\"1\" name=\"Floor\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
         data.append("  <data encoding=\"csv\">\n");
+//        for (int x = 0; x < width + 2; x++) {
+//            for (int y = 0; y < height + 2; y++) {
+//                if (!(x == y && x == 0)) {
+//                    data.append(",");
+//                }
+//                try {
+//                    int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
+//                    if (i == 250 || i == 156 || i == 211) {
+//                        data.append(i);
+//                    } else {
+//                        data.append(1);
+//                    }
+//                } catch (NullPointerException e) {
+//                    data.append(1);
+//                }
+//            }
+//            data.append("\n");
+//        }
+//        data.append("</data>\n");
+//        data.append("</layer>\n");
+//        data.append(" <layer id=\"2\" name=\"Walls\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
+//        data.append("  <data encoding=\"csv\">\n");
         for (int x = 0; x < width + 2; x++) {
             for (int y = 0; y < height + 2; y++) {
                 if (!(x == y && x == 0)) {
@@ -603,35 +625,9 @@ public class WorldGenerator {
                 }
                 try {
                     int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
-                    if (i == 250 || i == 156 || i == 211) {
                         data.append(i);
-                    } else {
-                        data.append(1);
-                    }
                 } catch (NullPointerException e) {
                     data.append(1);
-                }
-            }
-            data.append("\n");
-        }
-        data.append("</data>\n");
-        data.append("</layer>\n");
-        data.append(" <layer id=\"2\" name=\"Walls\" width=\"").append(width + 2).append("\" height=\"").append(height + 2).append("\">\n");
-        data.append("  <data encoding=\"csv\">\n");
-        for (int x = 0; x < width + 2; x++) {
-            for (int y = 0; y < height + 2; y++) {
-                if (!(x == y && x == 0)) {
-                    data.append(",");
-                }
-                try {
-                    int i = (int) Tile.convertColorToTile(image.getRGB(y, x)).getCharacter();
-                    if (i != 250 && i != 156 && i != 211) {
-                        data.append(i);
-                    } else {
-                        data.append(0);
-                    }
-                } catch (NullPointerException e) {
-                    data.append(0);
                 }
             }
             data.append("\n");

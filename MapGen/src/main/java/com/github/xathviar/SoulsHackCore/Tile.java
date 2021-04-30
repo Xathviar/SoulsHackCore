@@ -6,7 +6,7 @@ import java.awt.*;
 public enum Tile {
 FLOOR((char) 250, Color.CYAN),
     CORRIDOR((char) 250, Color.RED),
-    WALL((char) 0, Color.WHITE),
+    WALL((char) 1, Color.WHITE),
     WALLHORIZONTAL((char) 197, new Color(255, 197, 0)),
     WALLVERTICAL((char) 180, new Color(255, 180, 0)),
 
