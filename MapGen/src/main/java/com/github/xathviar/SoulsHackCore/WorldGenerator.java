@@ -606,10 +606,10 @@ public class WorldGenerator {
                     if (i == 250 || i == 156 || i == 211) {
                         data.append(i);
                     } else {
-                        data.append(0);
+                        data.append(1);
                     }
                 } catch (NullPointerException e) {
-                    data.append(0);
+                    data.append(1);
                 }
             }
             data.append("\n");
