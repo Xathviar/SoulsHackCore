@@ -310,7 +310,7 @@ public class WorldGenerator {
             case 197:
             case 229:
             case 37:
-                return Tile.WALLEDGENORMAL;
+                return Tile.FLOOR;
             case 10:
             case 11:
             case 14:
