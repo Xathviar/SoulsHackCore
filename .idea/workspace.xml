@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Changed one small Thing :D">
+    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Added small thing...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapGen/src/main/java/com/github/xathviar/SoulsHackCore/WorldGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MapGen/src/main/java/com/github/xathviar/SoulsHackCore/WorldGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapGen/src/main/resources/test2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/MapGen/src/main/resources/test2.tmx" afterDir="false" />
@@ -29,6 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -41,6 +42,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -63,8 +77,25 @@
       <workItem from="1619902478174" duration="5000" />
       <workItem from="1624543132537" duration="272000" />
       <workItem from="1624749995921" duration="74000" />
-      <workItem from="1625179330571" duration="315000" />
+      <workItem from="1625179330571" duration="381000" />
+      <workItem from="1625268308459" duration="2099000" />
+      <workItem from="1625272900442" duration="657000" />
     </task>
+    <task id="LOCAL-00001" summary="Changed one small Thing :D">
+      <created>1625179699332</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625179699332</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added small thing...">
+      <created>1625268872187</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625268872188</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,5 +112,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changed one small Thing :D" />
+    <MESSAGE value="Added small thing..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added small thing..." />
   </component>
 </project>

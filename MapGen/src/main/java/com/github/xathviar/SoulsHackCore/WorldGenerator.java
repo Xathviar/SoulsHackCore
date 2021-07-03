@@ -640,13 +640,13 @@ public class WorldGenerator {
     }
 
     public boolean[][] createWalkableStage() {
-        boolean[][] worldMap = new boolean[width+2][height+2];
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
+        boolean[][] worldMap = new boolean[width][height];
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 try {
-                    worldMap[i][j] = Tile.convertColorToTile(image.getRGB(i, j)) == Tile.FLOOR || Tile.convertColorToTile(image.getRGB(i, j)) == Tile.CORRIDOR;
+                    worldMap[j][i] = Tile.convertColorToTile(image.getRGB(i, j)) == Tile.FLOOR || Tile.convertColorToTile(image.getRGB(i, j)) == Tile.CORRIDOR;
                 } catch (NullPointerException e) {
-                    worldMap[i][j] = false;
+                    worldMap[j][i] = false;
                 }
             }
         }
@@ -655,13 +655,13 @@ public class WorldGenerator {
 
     public static void main(String[] arg) {
         String seed = "TerefangIsInDaHood";
-        WorldGenerator generator = new WorldGenerator(128, 128, seed);
+        WorldGenerator generator = new WorldGenerator(64, 64, seed);
         TileFontGenerator.exportImage(new File("image.png"), generator.getImage());
         generator.createTiledMap(new File("MapGen/src/main/resources/test2.tmx"));
         boolean[][] world = generator.createWalkableStage();
         for (int i = 0; i < world.length; i++) {
             for (int j = 0; j < world[i].length; j++) {
-                System.out.printf("%2s", world[i][j] ? "1" : "0");
+                System.out.printf("%3s", world[i][j] ? "." : "#");
             }
             System.out.println();
         }
