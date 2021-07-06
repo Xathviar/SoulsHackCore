@@ -231,6 +231,8 @@ public class WorldGenerator {
             x = (int) ((PerlinScalar.pickByte(kernel4, (j++) * 315) / 256f) * (room.getWidth())) + room.getCoordinates().getX() - (room.getWidth() / 2);
             y = (int) ((PerlinScalar.pickByte(kernel4, (j++) * 315) / 256f) * (room.getHeight())) + room.getCoordinates().getY() - (room.getHeight() / 2);
         }
+        x = Math.max(x, 0);
+        y = Math.max(y, 0);
         return new Point(x, y);
     }
 
@@ -642,8 +644,8 @@ public class WorldGenerator {
 
     public boolean[][] createWalkableStage() {
         boolean[][] worldMap = new boolean[width][height];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < width + 2; i++) {
+            for (int j = 0; j < height + 2; j++) {
                 try {
                     worldMap[j][i] = Tile.convertColorToTile(image.getRGB(i, j)) == Tile.FLOOR || Tile.convertColorToTile(image.getRGB(i, j)) == Tile.CORRIDOR;
                 } catch (NullPointerException e) {
@@ -656,7 +658,7 @@ public class WorldGenerator {
 
     public static void main(String[] arg) {
         String seed = "TerefangIsInDaHood";
-        WorldGenerator generator = new WorldGenerator(120, 120, "811");
+        WorldGenerator generator = new WorldGenerator(120, 120, "152208");
         TileFontGenerator.exportImage(new File("image.png"), generator.getImage());
         generator.createTiledMap(new File("MapGen/src/main/resources/test2.tmx"));
         boolean[][] world = generator.createWalkableStage();

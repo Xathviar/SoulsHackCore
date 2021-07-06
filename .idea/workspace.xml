@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Wies so ist im Leben. Man wird nie fertig">
+    <list default="true" id="8b8f964a-70a3-489e-b4f0-4296d4abf7af" name="Default Changelist" comment="Fixed a small bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MapGen/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MapGen/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapGen/src/main/java/com/github/xathviar/SoulsHackCore/WorldGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/MapGen/src/main/java/com/github/xathviar/SoulsHackCore/WorldGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapGen/src/main/resources/test2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/MapGen/src/main/resources/test2.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image.png" beforeDir="false" afterPath="$PROJECT_DIR$/image.png" afterDir="false" />
@@ -80,7 +79,7 @@
       <workItem from="1625268308459" duration="2099000" />
       <workItem from="1625272900442" duration="1914000" />
       <workItem from="1625605522445" duration="40000" />
-      <workItem from="1625608761123" duration="642000" />
+      <workItem from="1625608761123" duration="1374000" />
     </task>
     <task id="LOCAL-00001" summary="Changed one small Thing :D">
       <created>1625179699332</created>
@@ -103,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625273682752</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed a small bug">
+      <created>1625609420609</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1625609420609</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,14 +131,19 @@
     <MESSAGE value="Changed one small Thing :D" />
     <MESSAGE value="Added small thing..." />
     <MESSAGE value="Wies so ist im Leben. Man wird nie fertig" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wies so ist im Leben. Man wird nie fertig" />
+    <MESSAGE value="Fixed a small bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a small bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
+        <breakpoint type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="4" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
