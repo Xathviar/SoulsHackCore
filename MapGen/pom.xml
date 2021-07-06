@@ -5,14 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.xathviar.SoulsHackCore</groupId>
     <artifactId>MapGen</artifactId>
-    <version>0.1b</version>
+    <version>2021.07.03.1</version>
     <parent>
         <groupId>com.github.xathviar</groupId>
         <artifactId>SoulsHackCore</artifactId>
         <version>0.1b</version>
     </parent>
-
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>

@@ -271,6 +271,7 @@ public class WorldGenerator {
             case 20:
             case 21:
             case 32:
+            case 4:
             case 33:
             case 34:
             case 35:
@@ -311,7 +312,7 @@ public class WorldGenerator {
             case 197:
             case 229:
             case 37:
-                return Tile.FLOOR;
+                return Tile.WALLEDGENORMAL;
             case 10:
             case 11:
             case 14:
@@ -655,7 +656,7 @@ public class WorldGenerator {
 
     public static void main(String[] arg) {
         String seed = "TerefangIsInDaHood";
-        WorldGenerator generator = new WorldGenerator(64, 64, seed);
+        WorldGenerator generator = new WorldGenerator(120, 120, "811");
         TileFontGenerator.exportImage(new File("image.png"), generator.getImage());
         generator.createTiledMap(new File("MapGen/src/main/resources/test2.tmx"));
         boolean[][] world = generator.createWalkableStage();
