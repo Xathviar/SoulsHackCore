@@ -643,7 +643,7 @@ public class WorldGenerator {
     }
 
     public boolean[][] createWalkableStage() {
-        boolean[][] worldMap = new boolean[width][height];
+        boolean[][] worldMap = new boolean[width + 2][height + 2];
         for (int i = 0; i < width + 2; i++) {
             for (int j = 0; j < height + 2; j++) {
                 try {
