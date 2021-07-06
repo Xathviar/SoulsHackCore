@@ -644,8 +644,8 @@ public class WorldGenerator {
 
     public boolean[][] createWalkableStage() {
         boolean[][] worldMap = new boolean[width + 2][height + 2];
-        for (int i = 0; i < width + 2; i++) {
-            for (int j = 0; j < height + 2; j++) {
+        for (int i = 0; i < worldMap.length ; i++) {
+            for (int j = 0; j < worldMap[i].length; j++) {
                 try {
                     worldMap[j][i] = Tile.convertColorToTile(image.getRGB(i, j)) == Tile.FLOOR || Tile.convertColorToTile(image.getRGB(i, j)) == Tile.CORRIDOR;
                 } catch (NullPointerException e) {
